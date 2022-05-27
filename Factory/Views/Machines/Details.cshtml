@@ -16,7 +16,6 @@ else
       <li>@join.Engineer.Name</li>
       @using (Html.BeginForm("DeleteEngineer", "Machines"))
       {
-        @Html.HiddenFor(model => model.MachineId)
         @Html.Hidden("joinId", @join.EngineerMachineId)
         <input type="submit" value="Delete" class="btn btn-danger">
       }
