@@ -14,9 +14,16 @@ else
     @foreach (var join in Model.JoinEntities)
     {
       <li>@join.Engineer.Name</li>
+      @using (Html.BeginForm("DeleteEngineer", "Machines"))
+      {
+        @Html.HiddenFor(model => model.MachineId)
+        @Html.Hidden("joinId", @join.EngineerMachineId)
+        <input type="submit" value="Delete" class="btn btn-danger">
+      }
     }
   </ul>
 }
+<p>@Html.ActionLink($"Add An Engineer", "AddEngineer", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink($"Edit {Model.Name}", "Edit", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink($"Delete {Model.Name}", "Delete", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Back To List Of Machines", "Index")</p>
